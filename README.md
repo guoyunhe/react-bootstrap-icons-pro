@@ -15,7 +15,7 @@ function App() {
   return (
     <div>
       <BiSearch />
-      <BiSend />
+      <BiSend size="48px" color="#66ccff" />
     </div>
   );
 }
