@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1 - 2024-01-21
+
+- Update README
+
 ## 1.1.0 - 2024-01-21
 
 - Added `color` (default: `currentColor`) and `size` (default: `1em`) prop
