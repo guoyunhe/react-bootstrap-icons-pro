@@ -59,5 +59,8 @@
     "doc": {
       "basename": "/react-bootstrap-icons-pro/"
     }
+  },
+  "dependencies": {
+    "classnames": "^2.5.1"
   }
 }
