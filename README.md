@@ -8,19 +8,62 @@ Up-to-date Bootstrap icons as React components.
 npm i -S react-bootstrap-icons-pro
 ```
 
-```jsx live
-import { BiSearch, BiSend } from 'react-bootstrap-icons-pro';
+```jsx
+import {
+  BiArrowClockwise,
+  BiCalendar,
+  BiSearch,
+  BiSend,
+} from 'react-bootstrap-icons-pro';
 
 function App() {
   return (
-    <div>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+      <BiArrowClockwise />
+      <BiCalendar />
       <BiSearch />
-      <BiSend size="48px" color="#66ccff" />
+      <BiSend />
     </div>
   );
 }
 
 render(<App />);
+```
+
+## Customize
+
+You can customize each icon's size, color and other styles.
+
+```jsx
+import {
+  BiArrowClockwise,
+  BiCalendar,
+  BiSearch,
+  BiSend,
+} from 'react-bootstrap-icons-pro';
+
+function App() {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+      <BiArrowClockwise size="2em" />
+      <BiCalendar size={12} />
+      <BiSearch color="green" />
+      <BiSend color="#66ccff" size={24} />
+    </div>
+  );
+}
+
+render(<App />);
+```
+
+If you want to define global icon styles, use `.bi` class name.
+
+```css
+.bi {
+  display: block;
+  font-size: 1.3em;
+  vertical-align: middle;
+}
 ```
 
 ## FAQ
