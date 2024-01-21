@@ -1,0 +1,58 @@
+{
+  "homepage": "https://github.com/guoyunhe/react-bootstrap-icons-pro#readme",
+  "bugs": {
+    "url": "https://github.com/guoyunhe/react-bootstrap-icons-pro/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guoyunhe/react-bootstrap-icons-pro.git"
+  },
+  "funding": "https://github.com/sponsors/guoyunhe",
+  "author": {
+    "name": "Guo Yunhe",
+    "email": "i@guoyunhe.me"
+  },
+  "name": "react-bootstrap-icons-pro",
+  "version": "0.0.1",
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "style": "dist/index.css",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "rive start",
+    "build": "rive build",
+    "build:watch": "rive build --watch",
+    "test": "rive test",
+    "test:watch": "rive test --watch",
+    "lint": "rive lint",
+    "lint:fix": "rive lint --fix",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "@mdx-js/react": "^3.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "gh-pages": "^5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-doc-ui": "^2.0.0",
+    "rive": "^2.0.0",
+    "typescript": "^5.0.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-rive"
+  },
+  "prettier": "prettier-config-rive",
+  "rive": {
+    "template": "react-icons",
+    "doc": {
+      "basename": "/react-bootstrap-icons-pro/"
+    }
+  }
+}
