@@ -1,4 +1,6 @@
 {
+  "name": "react-bootstrap-icons-pro",
+  "version": "0.0.1",
   "homepage": "https://github.com/guoyunhe/react-bootstrap-icons-pro#readme",
   "bugs": {
     "url": "https://github.com/guoyunhe/react-bootstrap-icons-pro/issues"
@@ -12,12 +14,10 @@
     "name": "Guo Yunhe",
     "email": "i@guoyunhe.me"
   },
-  "name": "react-bootstrap-icons-pro",
-  "version": "0.0.1",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
-  "style": "dist/index.css",
   "types": "dist/index.d.ts",
+  "style": "dist/index.css",
   "files": [
     "dist",
     "CHANGELOG.md",
@@ -25,30 +25,35 @@
     "README.md"
   ],
   "scripts": {
-    "start": "rive start",
     "build": "rive build",
     "build:watch": "rive build --watch",
-    "test": "rive test",
-    "test:watch": "rive test --watch",
+    "deploy": "gh-pages -d build",
+    "generate": "tsx generate.ts",
     "lint": "rive lint",
     "lint:fix": "rive lint --fix",
-    "deploy": "gh-pages -d build"
+    "start": "rive start",
+    "test": "rive test",
+    "test:watch": "rive test --watch"
   },
-  "devDependencies": {
-    "@mdx-js/react": "^3.0.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "gh-pages": "^5.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-doc-ui": "^2.0.0",
-    "rive": "^2.0.0",
-    "typescript": "^5.0.0"
-  },
+  "prettier": "prettier-config-rive",
   "eslintConfig": {
     "extends": "eslint-config-rive"
   },
-  "prettier": "prettier-config-rive",
+  "devDependencies": {
+    "@mdx-js/react": "^3.0.0",
+    "@types/node": "^20.11.5",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "bootstrap-icons": "^1.11.3",
+    "change-case": "^5.4.2",
+    "gh-pages": "^5.0.0",
+    "react": "^18.2.0",
+    "react-doc-ui": "^2.0.1",
+    "react-dom": "^18.2.0",
+    "rive": "^2.0.10",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
   "rive": {
     "template": "react-icons",
     "doc": {

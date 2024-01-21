@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "checkJs": false,
     "skipLibCheck": true,
@@ -14,22 +10,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "types": [
-      "rive/globals"
-    ],
-    "jsx": "react-jsx"
+    "types": ["node", "rive/globals"],
+    "jsx": "react-jsx",
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "**/*.spec.jsx",
-    "**/*.spec.tsx",
-    "**/*.test.jsx",
-    "**/*.test.tsx",
-    "**/*.spec.js",
-    "**/*.spec.ts",
-    "**/*.test.js",
-    "**/*.test.ts"
-  ]
+  "include": ["src", "generate.ts"],
 }
