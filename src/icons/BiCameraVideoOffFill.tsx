@@ -1,15 +1,20 @@
-import { SVGProps } from 'react';
+import { IconProps } from '../types';
 import cn from 'classnames';
 
 export default function BiCameraVideoOffFill({
   className,
+  size = '1em',
+  color = 'currentColor',
   ...props
-}: SVGProps<SVGSVGElement>) {
+}: IconProps) {
   return (
     <svg
       {...props}
       className={cn('bi', 'bi-camera-video-off-fill', className)}
       viewBox="0 0 16 16"
+      width={size}
+      height={size}
+      fill={color}
     >
       <path
         fillRule="evenodd"

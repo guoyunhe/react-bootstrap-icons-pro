@@ -1,15 +1,20 @@
-import { SVGProps } from 'react';
+import { IconProps } from '../types';
 import cn from 'classnames';
 
 export default function BiBoombox({
   className,
+  size = '1em',
+  color = 'currentColor',
   ...props
-}: SVGProps<SVGSVGElement>) {
+}: IconProps) {
   return (
     <svg
       {...props}
       className={cn('bi', 'bi-boombox', className)}
       viewBox="0 0 16 16"
+      width={size}
+      height={size}
+      fill={color}
     >
       <path d="M2.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m7.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m1.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-7-1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm5.5 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
       <path d="M11.5 13a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5m0-1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />

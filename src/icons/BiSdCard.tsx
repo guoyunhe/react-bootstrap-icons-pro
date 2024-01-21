@@ -1,15 +1,20 @@
-import { SVGProps } from 'react';
+import { IconProps } from '../types';
 import cn from 'classnames';
 
 export default function BiSdCard({
   className,
+  size = '1em',
+  color = 'currentColor',
   ...props
-}: SVGProps<SVGSVGElement>) {
+}: IconProps) {
   return (
     <svg
       {...props}
       className={cn('bi', 'bi-sd-card', className)}
       viewBox="0 0 16 16"
+      width={size}
+      height={size}
+      fill={color}
     >
       <path d="M6.25 3.5a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0zm2 0a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0zm2 0a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0zm2 0a.75.75 0 0 0-1.5 0v2a.75.75 0 0 0 1.5 0z" />
       <path

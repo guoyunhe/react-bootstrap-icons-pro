@@ -1,15 +1,20 @@
-import { SVGProps } from 'react';
+import { IconProps } from '../types';
 import cn from 'classnames';
 
 export default function BiSignYield({
   className,
+  size = '1em',
+  color = 'currentColor',
   ...props
-}: SVGProps<SVGSVGElement>) {
+}: IconProps) {
   return (
     <svg
       {...props}
       className={cn('bi', 'bi-sign-yield', className)}
       viewBox="0 0 16 16"
+      width={size}
+      height={size}
+      fill={color}
     >
       <path d="M5.506 6.232V7H5.11v-.76L4.44 5h.44l.424.849h.016L5.748 5h.428zM6.628 5v2h-.396V5zm.684 1.676h.895V7H6.919V5h1.288v.324h-.895v.513h.842v.303h-.842zm1.521-.013h.848V7H8.437V5h.396z" />
       <path

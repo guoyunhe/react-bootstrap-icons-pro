@@ -1,15 +1,20 @@
-import { SVGProps } from 'react';
+import { IconProps } from '../types';
 import cn from 'classnames';
 
 export default function BiQrCodeScan({
   className,
+  size = '1em',
+  color = 'currentColor',
   ...props
-}: SVGProps<SVGSVGElement>) {
+}: IconProps) {
   return (
     <svg
       {...props}
       className={cn('bi', 'bi-qr-code-scan', className)}
       viewBox="0 0 16 16"
+      width={size}
+      height={size}
+      fill={color}
     >
       <path d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z" />
       <path d="M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z" />

@@ -19,10 +19,9 @@ if (existsSync(svgIconPackageJsonPath)) {
   rmSync(svgIconPackageJsonPath);
 }
 
-if (existsSync('./src')) {
-  rmSync('./src', { recursive: true, force: true });
+if (existsSync('./src/icons')) {
+  rmSync('./src/icons', { recursive: true, force: true });
 }
-mkdirSync('./src');
 mkdirSync('./src/icons');
 
 let indexContent = '';
@@ -39,19 +38,19 @@ files.forEach((file) => {
     .substring(fileContent.indexOf('>') + 1, fileContent.indexOf('</svg>'))
     .trim()
     .replace('fill-rule=', 'fillRule=');
-  const componentContent = `import { SVGProps } from 'react';
+  const componentContent = `import { IconProps } from '../types';
 import cn from 'classnames';
 
-export default function ${componentName}({ className, ...props }: SVGProps<SVGSVGElement>) {
+export default function ${componentName}({ className, size = '1em', color = 'currentColor', ...props }: IconProps) {
   return (
-    <svg {...props} className={cn('bi', 'bi-${iconName}', className)} viewBox="0 0 16 16">
+    <svg {...props} className={cn('bi', 'bi-${iconName}', className)} viewBox="0 0 16 16" width={size} height={size} fill={color}>
       ${svgInnerContent}
     </svg>
   );
 }
 `;
   writeFileSync('./src/icons/' + componentName + '.tsx', componentContent);
-  indexContent += `export { default as ${componentName} } from './icons/${componentName}';\n`;
+  indexContent += `export { default as ${componentName} } from './${componentName}';\n`;
 });
 
-writeFileSync('./src/index.ts', indexContent);
+writeFileSync('./src/icons/index.ts', indexContent);

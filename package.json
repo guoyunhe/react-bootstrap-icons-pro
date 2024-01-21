@@ -39,6 +39,9 @@
   "eslintConfig": {
     "extends": "eslint-config-rive"
   },
+  "dependencies": {
+    "classnames": "^2.5.1"
+  },
   "devDependencies": {
     "@mdx-js/react": "^3.0.0",
     "@types/node": "^20.11.5",
@@ -59,8 +62,5 @@
     "doc": {
       "basename": "/react-bootstrap-icons-pro/"
     }
-  },
-  "dependencies": {
-    "classnames": "^2.5.1"
   }
 }
