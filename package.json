@@ -10,6 +10,7 @@
     "url": "git+https://github.com/guoyunhe/react-bootstrap-icons-pro.git"
   },
   "funding": "https://github.com/sponsors/guoyunhe",
+  "license": "MIT",
   "author": {
     "name": "Guo Yunhe",
     "email": "i@guoyunhe.me"
