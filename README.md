@@ -1,6 +1,6 @@
 # React Bootstrap Icons Pro
 
-Up-to-date Bootstrap icons as React components.
+Up-to-date Bootstrap icons (v1.11.3) as React components.
 
 ## How to use
 

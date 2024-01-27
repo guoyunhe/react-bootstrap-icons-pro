@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.3 - 2024-01-27
+
+- Updated README
+
 ## 1.1.2 - 2024-01-22
 
 - Added MIT license to package.json
