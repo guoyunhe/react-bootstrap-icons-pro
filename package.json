@@ -35,17 +35,23 @@
     "lint:fix": "rive lint --fix",
     "start": "rive start",
     "test": "rive test",
+    "test:ui": "rive test --ui",
     "test:watch": "rive test --watch"
   },
   "prettier": "prettier-config-rive",
   "eslintConfig": {
-    "extends": "eslint-config-rive"
+    "extends": "eslint-config-rive/react"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-rive"
   },
   "dependencies": {
     "classnames": "^2.5.1"
   },
   "devDependencies": {
     "@mdx-js/react": "^3.0.0",
+    "@testing-library/react": "^14.2.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.52",
     "@types/react-dom": "^18.2.18",
@@ -58,6 +64,9 @@
     "rive": "^2.0.19",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^17.0.0 || ^16.8.0"
   },
   "rive": {
     "template": "react-icons",
