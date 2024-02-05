@@ -1,5 +1,5 @@
-import { IconProps } from '../types';
 import cn from 'classnames';
+import { IconProps } from '../types';
 
 export default function BiMusicNoteList({
   className,
@@ -20,7 +20,7 @@ export default function BiMusicNoteList({
       <path fillRule="evenodd" d="M12 3v10h-1V3z" />
       <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1z" />
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5m0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5"
       />
     </svg>

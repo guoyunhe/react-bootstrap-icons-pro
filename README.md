@@ -9,12 +9,7 @@ npm i -S react-bootstrap-icons-pro
 ```
 
 ```jsx
-import {
-  BiArrowClockwise,
-  BiCalendar,
-  BiSearch,
-  BiSend,
-} from 'react-bootstrap-icons-pro';
+import { BiArrowClockwise, BiCalendar, BiSearch, BiSend } from 'react-bootstrap-icons-pro';
 
 function App() {
   return (
@@ -35,12 +30,7 @@ render(<App />);
 You can customize each icon's size, color and other styles.
 
 ```jsx
-import {
-  BiArrowClockwise,
-  BiCalendar,
-  BiSearch,
-  BiSend,
-} from 'react-bootstrap-icons-pro';
+import { BiArrowClockwise, BiCalendar, BiSearch, BiSend } from 'react-bootstrap-icons-pro';
 
 function App() {
   return (

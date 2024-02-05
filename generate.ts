@@ -1,20 +1,12 @@
 import { pascalCase } from 'change-case';
-import {
-  existsSync,
-  mkdirSync,
-  readdirSync,
-  readFileSync,
-  rmSync,
-  writeFileSync,
-} from 'fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 const iconsRoot = './node_modules/bootstrap-icons/icons';
 
 const files = readdirSync(iconsRoot);
 
-const svgIconPackageJsonPath =
-  'node_modules/@mui/material/SvgIcon/package.json';
+const svgIconPackageJsonPath = 'node_modules/@mui/material/SvgIcon/package.json';
 if (existsSync(svgIconPackageJsonPath)) {
   rmSync(svgIconPackageJsonPath);
 }
@@ -38,8 +30,8 @@ files.forEach((file) => {
     .substring(fileContent.indexOf('>') + 1, fileContent.indexOf('</svg>'))
     .trim()
     .replace('fill-rule=', 'fillRule=');
-  const componentContent = `import { IconProps } from '../types';
-import cn from 'classnames';
+  const componentContent = `import cn from 'classnames';
+import { IconProps } from '../types';
 
 export default function ${componentName}({ className, size = '1em', color = 'currentColor', ...props }: IconProps) {
   return (

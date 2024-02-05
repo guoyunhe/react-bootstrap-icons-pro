@@ -1,5 +1,5 @@
-import { IconProps } from '../types';
 import cn from 'classnames';
+import { IconProps } from '../types';
 
 export default function BiBuildingsFill({
   className,
