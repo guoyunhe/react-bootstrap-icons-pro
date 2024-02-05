@@ -53,7 +53,7 @@
     "@testing-library/react": "^14.2.1",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.11.16",
-    "@types/react": "^18.2.52",
+    "@types/react": "^18.2.53",
     "@types/react-dom": "^18.2.18",
     "bootstrap-icons": "^1.11.3",
     "change-case": "^5.4.2",
@@ -61,7 +61,7 @@
     "react": "^18.2.0",
     "react-doc-ui": "^2.2.1",
     "react-dom": "^18.2.0",
-    "rive": "^2.0.19",
+    "rive": "^2.0.22",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   },
