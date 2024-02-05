@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.4 - 2024-02-05
+
+- Refactored icons, convert `fill-rule` to `fillRule`
+
 ## 1.1.3 - 2024-01-27
 
 - Updated README
