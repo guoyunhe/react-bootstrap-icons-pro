@@ -7,7 +7,7 @@
 
 Bootstrap Icons as customizable React components. Based on
 [Bootstrap Icons 1.13.2](https://icons.getbootstrap.com/) and compatible with
-React 16.8, 17, and 18.
+React 16.8 and later, including React 17, 18, and 19.
 
 ## Install
 
