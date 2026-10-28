@@ -5,70 +5,86 @@
 [![GitHub stars](https://badgen.net/github/stars/guoyunhe/react-bootstrap-icons-pro)](https://github.com/guoyunhe/react-bootstrap-icons-pro)
 [![License](https://badgen.net/github/license/guoyunhe/react-bootstrap-icons-pro)](./LICENSE)
 
-Up-to-date Bootstrap icons (v1.13.2) as React components.
+Bootstrap Icons as customizable React components. Based on
+[Bootstrap Icons 1.13.2](https://icons.getbootstrap.com/) and compatible with
+React 16.8, 17, and 18.
 
-## How to use
+## Install
 
 ```bash
-npm i -S react-bootstrap-icons-pro
+npm install react-bootstrap-icons-pro
 ```
 
-```jsx
-import { BiArrowClockwise, BiCalendar, BiSearch, BiSend } from 'react-bootstrap-icons-pro';
+## Quick start
 
-function App() {
+Import the icons you need and use them like any React component:
+
+```jsx
+import { BiArrowClockwise, BiCalendar, BiSearch } from 'react-bootstrap-icons-pro';
+
+export default function App() {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+    <div>
       <BiArrowClockwise />
       <BiCalendar />
       <BiSearch />
-      <BiSend />
     </div>
   );
 }
-
-render(<App />);
 ```
 
 ## Customize
 
-You can customize each icon's size, color and other styles.
+Icons inherit the surrounding text color and font size by default. Set `color`
+and `size` props to customize them; standard SVG props such as `className` and
+`aria-label` are also supported.
 
 ```jsx
-import { BiArrowClockwise, BiCalendar, BiSearch, BiSend } from 'react-bootstrap-icons-pro';
+import { BiSearch } from 'react-bootstrap-icons-pro';
 
-function App() {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <BiArrowClockwise size='2em' />
-      <BiCalendar size={12} />
-      <BiSearch color='green' />
-      <BiSend color='#66ccff' size={24} />
-    </div>
-  );
+export default function SearchButton() {
+  return <BiSearch size={24} color='royalblue' aria-label='Search' />;
 }
-
-render(<App />);
 ```
 
-If you want to define global icon styles, use `.bi` class name.
+| Prop    | Default        | Description                                                 |
+| ------- | -------------- | ----------------------------------------------------------- |
+| `size`  | `1em`          | Icon width and height; accepts a number or CSS size string. |
+| `color` | `currentColor` | Icon fill color.                                            |
+
+### Global styles and text alignment
+
+Every icon includes the `.bi` class, so you can apply shared styles. Use
+`vertical-align: middle` to align an inline icon with adjacent text:
 
 ```css
 .bi {
-  display: block;
+  display: inline-block;
   font-size: 1.3em;
   vertical-align: middle;
 }
 ```
 
+```jsx
+<p>
+  <BiSearch /> Search
+</p>
+```
+
+## Find an icon
+
+Browse the [Bootstrap Icons catalog](https://icons.getbootstrap.com/). Components
+are exported with a `Bi` prefix—for example, the `search` icon is `BiSearch`.
+
 ## FAQ
 
-### Why another package?
+### Why use this package?
 
-Existing `react-bootstrap-icons` doesn't update for quite a long time. So I started a new one.
+It provides Bootstrap Icons as individually importable React components, with
+props for common customization such as size and color.
 
-### Why component name is `BiSearch` instead of `Search`?
+### Why are components prefixed with `Bi`?
 
-Because here are many icon names starting with numbers, like icon `1-circle`. Without prefix, `1Circle` is invalid React component name. So I added `Bi` prefix to all component names.
-
-Here is another advantage, when you type `<Bi` in VS Code, you can get hints for icon components when you are not quite sure about the exact names of icons.
+The prefix identifies Bootstrap icons and avoids naming conflicts. It also
+keeps component names valid for icons whose names start with a number, such as
+`1-circle` (`Bi1Circle`).
