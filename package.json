@@ -34,7 +34,7 @@
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "generate": "tsx generate.ts",
-    "lint": "oxlint && stylelint \"**/*.css\"",
+    "lint": "oxlint && stylelint \"**/*.css\" --allow-empty-input",
     "lint:fix": "rive lint --fix",
     "prepare": "husky",
     "start": "rive start",
