@@ -1,5 +1,10 @@
 # React Bootstrap Icons Pro
 
+[![npm version](https://badgen.net/npm/v/react-bootstrap-icons-pro)](https://www.npmjs.com/package/react-bootstrap-icons-pro)
+[![npm downloads](https://badgen.net/npm/dt/react-bootstrap-icons-pro)](https://www.npmjs.com/package/react-bootstrap-icons-pro)
+[![GitHub stars](https://badgen.net/github/stars/guoyunhe/react-bootstrap-icons-pro)](https://github.com/guoyunhe/react-bootstrap-icons-pro)
+[![License](https://badgen.net/github/license/guoyunhe/react-bootstrap-icons-pro)](./LICENSE)
+
 Up-to-date Bootstrap icons (v1.13.2) as React components.
 
 ## How to use
