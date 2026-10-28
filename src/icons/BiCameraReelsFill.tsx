@@ -1,24 +1,14 @@
-import cn from 'classnames';
+import React from 'react';
+
+import SvgIcon from '../SvgIcon';
 import { IconProps } from '../types';
 
-export default function BiCameraReelsFill({
-  className,
-  size = '1em',
-  color = 'currentColor',
-  ...props
-}: IconProps) {
+export default function BiCameraReelsFill(props: IconProps) {
   return (
-    <svg
-      {...props}
-      className={cn('bi', 'bi-camera-reels-fill', className)}
-      viewBox="0 0 16 16"
-      width={size}
-      height={size}
-      fill={color}
-    >
-      <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-      <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-      <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
-    </svg>
+    <SvgIcon {...props} name='camera-reels-fill'>
+      <path d='M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0' />
+      <path d='M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6' />
+      <path d='M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z' />
+    </SvgIcon>
   );
 }

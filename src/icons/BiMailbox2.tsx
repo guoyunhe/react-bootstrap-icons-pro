@@ -1,23 +1,13 @@
-import cn from 'classnames';
+import React from 'react';
+
+import SvgIcon from '../SvgIcon';
 import { IconProps } from '../types';
 
-export default function BiMailbox2({
-  className,
-  size = '1em',
-  color = 'currentColor',
-  ...props
-}: IconProps) {
+export default function BiMailbox2(props: IconProps) {
   return (
-    <svg
-      {...props}
-      className={cn('bi', 'bi-mailbox2', className)}
-      viewBox="0 0 16 16"
-      width={size}
-      height={size}
-      fill={color}
-    >
-      <path d="M9 8.5h2.793l.853.854A.5.5 0 0 0 13 9.5h1a.5.5 0 0 0 .5-.5V8a.5.5 0 0 0-.5-.5H9z" />
-      <path d="M12 3H4a4 4 0 0 0-4 4v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7a4 4 0 0 0-4-4M8 7a4 4 0 0 0-1.354-3H12a3 3 0 0 1 3 3v6H8zm-3.415.157C4.42 7.087 4.218 7 4 7s-.42.086-.585.157C3.164 7.264 3 7.334 3 7a1 1 0 0 1 2 0c0 .334-.164.264-.415.157" />
-    </svg>
+    <SvgIcon {...props} name='mailbox2'>
+      <path d='M9 8.5h2.793l.853.854A.5.5 0 0 0 13 9.5h1a.5.5 0 0 0 .5-.5V8a.5.5 0 0 0-.5-.5H9z' />
+      <path d='M12 3H4a4 4 0 0 0-4 4v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7a4 4 0 0 0-4-4M8 7a4 4 0 0 0-1.354-3H12a3 3 0 0 1 3 3v6H8zm-3.415.157C4.42 7.087 4.218 7 4 7s-.42.086-.585.157C3.164 7.264 3 7.334 3 7a1 1 0 0 1 2 0c0 .334-.164.264-.415.157' />
+    </SvgIcon>
   );
 }

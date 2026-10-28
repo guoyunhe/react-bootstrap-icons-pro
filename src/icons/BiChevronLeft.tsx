@@ -1,25 +1,15 @@
-import cn from 'classnames';
+import React from 'react';
+
+import SvgIcon from '../SvgIcon';
 import { IconProps } from '../types';
 
-export default function BiChevronLeft({
-  className,
-  size = '1em',
-  color = 'currentColor',
-  ...props
-}: IconProps) {
+export default function BiChevronLeft(props: IconProps) {
   return (
-    <svg
-      {...props}
-      className={cn('bi', 'bi-chevron-left', className)}
-      viewBox="0 0 16 16"
-      width={size}
-      height={size}
-      fill={color}
-    >
+    <SvgIcon {...props} name='chevron-left'>
       <path
-        fillRule="evenodd"
-        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
+        fillRule='evenodd'
+        d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'
       />
-    </svg>
+    </SvgIcon>
   );
 }

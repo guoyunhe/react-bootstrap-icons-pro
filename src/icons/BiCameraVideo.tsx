@@ -1,25 +1,15 @@
-import cn from 'classnames';
+import React from 'react';
+
+import SvgIcon from '../SvgIcon';
 import { IconProps } from '../types';
 
-export default function BiCameraVideo({
-  className,
-  size = '1em',
-  color = 'currentColor',
-  ...props
-}: IconProps) {
+export default function BiCameraVideo(props: IconProps) {
   return (
-    <svg
-      {...props}
-      className={cn('bi', 'bi-camera-video', className)}
-      viewBox="0 0 16 16"
-      width={size}
-      height={size}
-      fill={color}
-    >
+    <SvgIcon {...props} name='camera-video'>
       <path
-        fillRule="evenodd"
-        d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"
+        fillRule='evenodd'
+        d='M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z'
       />
-    </svg>
+    </SvgIcon>
   );
 }

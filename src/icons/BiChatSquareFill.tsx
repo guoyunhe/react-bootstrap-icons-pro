@@ -1,22 +1,12 @@
-import cn from 'classnames';
+import React from 'react';
+
+import SvgIcon from '../SvgIcon';
 import { IconProps } from '../types';
 
-export default function BiChatSquareFill({
-  className,
-  size = '1em',
-  color = 'currentColor',
-  ...props
-}: IconProps) {
+export default function BiChatSquareFill(props: IconProps) {
   return (
-    <svg
-      {...props}
-      className={cn('bi', 'bi-chat-square-fill', className)}
-      viewBox="0 0 16 16"
-      width={size}
-      height={size}
-      fill={color}
-    >
-      <path d="M2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-    </svg>
+    <SvgIcon {...props} name='chat-square-fill'>
+      <path d='M2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z' />
+    </SvgIcon>
   );
 }

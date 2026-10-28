@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Updated icons to Bootstrap Icons 1.13.2
+
 ## 1.1.4 - 2024-02-05
 
 - Refactored icons, convert `fill-rule` to `fillRule`

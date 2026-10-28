@@ -1,25 +1,15 @@
-import cn from 'classnames';
+import React from 'react';
+
+import SvgIcon from '../SvgIcon';
 import { IconProps } from '../types';
 
-export default function BiHeartFill({
-  className,
-  size = '1em',
-  color = 'currentColor',
-  ...props
-}: IconProps) {
+export default function BiHeartFill(props: IconProps) {
   return (
-    <svg
-      {...props}
-      className={cn('bi', 'bi-heart-fill', className)}
-      viewBox="0 0 16 16"
-      width={size}
-      height={size}
-      fill={color}
-    >
+    <SvgIcon {...props} name='heart-fill'>
       <path
-        fillRule="evenodd"
-        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
+        fillRule='evenodd'
+        d='M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314'
       />
-    </svg>
+    </SvgIcon>
   );
 }

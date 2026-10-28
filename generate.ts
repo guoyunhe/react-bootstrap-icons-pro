@@ -1,6 +1,7 @@
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+
 import { pascalCase } from 'change-case';
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
-import { join } from 'path';
 
 const iconsRoot = './node_modules/bootstrap-icons/icons';
 
@@ -20,24 +21,26 @@ let indexContent = '';
 
 files.forEach((file) => {
   if (!file.endsWith('.svg')) return;
-  const iconName = file.substring(0, file.length - 4);
+  const iconName = file.slice(0, -4);
   const componentName = pascalCase('bi-' + iconName, {
     mergeAmbiguousCharacters: true,
   });
-  const filePath = join(iconsRoot, file);
-  const fileContent = readFileSync(filePath, 'utf-8');
+  const filePath = path.join(iconsRoot, file);
+  const fileContent = readFileSync(filePath, 'utf8');
   const svgInnerContent = fileContent
-    .substring(fileContent.indexOf('>') + 1, fileContent.indexOf('</svg>'))
+    .slice(fileContent.indexOf('>') + 1, fileContent.indexOf('</svg>'))
     .trim()
-    .replace('fill-rule=', 'fillRule=');
-  const componentContent = `import cn from 'classnames';
+    .replaceAll('fill-rule=', 'fillRule=')
+    .replaceAll('fill-opacity=', 'fillOpacity=');
+  const componentContent = `import React from 'react';
 import { IconProps } from '../types';
+import SvgIcon from '../SvgIcon';
 
-export default function ${componentName}({ className, size = '1em', color = 'currentColor', ...props }: IconProps) {
+export default function ${componentName}(props: IconProps) {
   return (
-    <svg {...props} className={cn('bi', 'bi-${iconName}', className)} viewBox="0 0 16 16" width={size} height={size} fill={color}>
+    <SvgIcon {...props} name="${iconName}">
       ${svgInnerContent}
-    </svg>
+    </SvgIcon>
   );
 }
 `;

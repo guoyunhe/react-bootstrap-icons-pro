@@ -1,25 +1,22 @@
 {
   "name": "react-bootstrap-icons-pro",
   "version": "1.1.4",
-  "description": "Up-to-date Bootstrap icons (v1.11.3) as React components",
+  "description": "Up-to-date Bootstrap icons (v1.13.2) as React components",
   "homepage": "https://guoyunhe.github.io/react-bootstrap-icons-pro/",
   "bugs": {
     "url": "https://github.com/guoyunhe/react-bootstrap-icons-pro/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/guoyunhe/react-bootstrap-icons-pro.git"
-  },
-  "funding": "https://ko-fi.com/guoyunhe",
   "license": "MIT",
   "author": {
     "name": "Guo Yunhe",
     "email": "i@guoyunhe.me",
     "url": "https://guoyunhe.me/"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guoyunhe/react-bootstrap-icons-pro.git"
+  },
+  "funding": "https://ko-fi.com/guoyunhe",
   "style": "dist/index.css",
   "files": [
     "dist",
@@ -27,29 +24,23 @@
     "LICENSE",
     "README.md"
   ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rive build",
     "build:watch": "rive build --watch",
     "deploy": "gh-pages -d build",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
     "generate": "tsx generate.ts",
     "lint": "oxlint && stylelint \"**/*.css\"",
     "lint:fix": "rive lint --fix",
+    "prepare": "husky",
     "start": "rive start",
     "test": "rive test",
     "test:ui": "rive test --ui",
-    "test:watch": "rive test --watch",
-    "format": "oxfmt --write .",
-    "format:check": "oxfmt --check .",
-    "prepare": "husky"
-  },
-  "eslintConfig": {
-    "extends": "eslint-config-rive/react"
-  },
-  "stylelint": {
-    "extends": "stylelint-config-rive"
-  },
-  "dependencies": {
-    "classnames": "^2.5.1"
+    "test:watch": "rive test --watch"
   },
   "devDependencies": {
     "@guoyunhe/editorconfig": "^0.3.0",
@@ -60,7 +51,7 @@
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.53",
     "@types/react-dom": "^18.2.18",
-    "bootstrap-icons": "^1.11.3",
+    "bootstrap-icons": "^1.13.2",
     "change-case": "^5.4.2",
     "gh-pages": "^5.0.0",
     "husky": "^9.1.7",
@@ -80,11 +71,22 @@
   "peerDependencies": {
     "react": "^18.0.0 || ^17.0.0 || ^16.8.0"
   },
-  "rive": {
-    "template": "react-icons",
-    "doc": {
-      "basename": "/react-bootstrap-icons-pro/"
-    }
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,vue}": [
+      "oxfmt --write",
+      "oxlint --fix"
+    ],
+    "*.css": [
+      "oxfmt --write",
+      "stylelint --fix"
+    ],
+    "*.{json,jsonc,scss,less,htm,html,md,mdx,yaml,yml}": "oxfmt --write"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-rive/react"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
   },
   "devEngines": {
     "packageManager": {
@@ -96,15 +98,10 @@
   "engines": {
     "node": "^26.12.1 || ^24.22.1 || ^22.23.4"
   },
-  "lint-staged": {
-    "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,vue}": [
-      "oxfmt --write",
-      "oxlint --fix"
-    ],
-    "*.css": [
-      "oxfmt --write",
-      "stylelint --fix"
-    ],
-    "*.{json,jsonc,scss,less,htm,html,md,mdx,yaml,yml}": "oxfmt --write"
+  "rive": {
+    "template": "react-icons",
+    "doc": {
+      "basename": "/react-bootstrap-icons-pro/"
+    }
   }
 }

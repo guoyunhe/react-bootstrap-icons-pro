@@ -1,6 +1,6 @@
 # React Bootstrap Icons Pro
 
-Up-to-date Bootstrap icons (v1.11.3) as React components.
+Up-to-date Bootstrap icons (v1.13.2) as React components.
 
 ## How to use
 
@@ -35,10 +35,10 @@ import { BiArrowClockwise, BiCalendar, BiSearch, BiSend } from 'react-bootstrap-
 function App() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-      <BiArrowClockwise size="2em" />
+      <BiArrowClockwise size='2em' />
       <BiCalendar size={12} />
-      <BiSearch color="green" />
-      <BiSend color="#66ccff" size={24} />
+      <BiSearch color='green' />
+      <BiSend color='#66ccff' size={24} />
     </div>
   );
 }
