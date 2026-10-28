@@ -10,11 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/guoyunhe/react-bootstrap-icons-pro.git"
   },
-  "funding": "https://github.com/sponsors/guoyunhe",
+  "funding": "https://ko-fi.com/guoyunhe",
   "license": "MIT",
   "author": {
     "name": "Guo Yunhe",
-    "email": "i@guoyunhe.me"
+    "email": "i@guoyunhe.me",
+    "url": "https://guoyunhe.me/"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",
@@ -31,14 +32,16 @@
     "build:watch": "rive build --watch",
     "deploy": "gh-pages -d build",
     "generate": "tsx generate.ts",
-    "lint": "rive lint",
+    "lint": "oxlint && stylelint \"**/*.css\"",
     "lint:fix": "rive lint --fix",
     "start": "rive start",
     "test": "rive test",
     "test:ui": "rive test --ui",
-    "test:watch": "rive test --watch"
+    "test:watch": "rive test --watch",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "prepare": "husky"
   },
-  "prettier": "prettier-config-rive",
   "eslintConfig": {
     "extends": "eslint-config-rive/react"
   },
@@ -49,6 +52,8 @@
     "classnames": "^2.5.1"
   },
   "devDependencies": {
+    "@guoyunhe/editorconfig": "^0.3.0",
+    "@guoyunhe/oxfmt-config": "^1.1.0",
     "@mdx-js/react": "^3.0.0",
     "@testing-library/react": "^14.2.1",
     "@testing-library/user-event": "^14.5.2",
@@ -58,10 +63,17 @@
     "bootstrap-icons": "^1.11.3",
     "change-case": "^5.4.2",
     "gh-pages": "^5.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "oxfmt": "^0.74.0",
+    "oxlint": "^1.89.0",
+    "oxlint-config-recommended": "^1.1.0",
     "react": "^18.2.0",
     "react-doc-ui": "^2.2.1",
     "react-dom": "^18.2.0",
     "rive": "^2.0.22",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   },
@@ -73,5 +85,26 @@
     "doc": {
       "basename": "/react-bootstrap-icons-pro/"
     }
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=12.15.0",
+      "onFail": "error"
+    }
+  },
+  "engines": {
+    "node": "^26.12.1 || ^24.22.1 || ^22.23.4"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,vue}": [
+      "oxfmt --write",
+      "oxlint --fix"
+    ],
+    "*.css": [
+      "oxfmt --write",
+      "stylelint --fix"
+    ],
+    "*.{json,jsonc,scss,less,htm,html,md,mdx,yaml,yml}": "oxfmt --write"
   }
 }
