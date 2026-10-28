@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.2.0
 
 - Updated icons to Bootstrap Icons 1.13.2
+- Support React 19
 
 ## 1.1.4 - 2024-02-05
 
