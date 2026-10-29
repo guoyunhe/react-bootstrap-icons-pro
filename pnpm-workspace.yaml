@@ -2,4 +2,7 @@ allowBuilds:
   '@swc/core': true
   esbuild: true
 minimumReleaseAgeExclude:
-  - '@vited/theme-mantine@0.2.0'
+  - '@vited/theme-mantine@0.2.0 || 0.2.1'
+  - '@vited/cli@0.1.1'
+  - '@vited/core@0.1.2'
+  - md-url-path@1.0.1
