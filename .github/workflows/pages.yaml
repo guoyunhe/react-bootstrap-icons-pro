@@ -24,6 +24,8 @@ jobs:
         with:
           node-version: 22
       - uses: pnpm/action-setup@v4
+        with:
+          version: 12
       - uses: actions/configure-pages@v5
       - run: pnpm approve-builds @swc/core esbuild
       - run: pnpm install
