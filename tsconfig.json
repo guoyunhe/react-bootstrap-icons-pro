@@ -10,8 +10,8 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "types": ["node", "rive/globals"],
+    "types": ["node"],
     "jsx": "react-jsx"
   },
-  "exclude": [".rive", "build", "coverage", "dist", "node_modules"]
+  "exclude": ["build", "coverage", "dist", "node_modules"]
 }

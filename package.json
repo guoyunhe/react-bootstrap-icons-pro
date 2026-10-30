@@ -25,12 +25,12 @@
     "README.md"
   ],
   "type": "module",
-  "main": "dist/cjs/index.js",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rive build",
-    "build:watch": "rive build --watch",
+    "build": "tsdown",
+    "build:watch": "tsdown --watch",
     "deploy": "gh-pages -d build",
     "docs:build": "vited build",
     "docs:dev": "vited dev",
@@ -41,9 +41,9 @@
     "lint:fix": "rive lint --fix",
     "prepare": "husky",
     "start": "rive start",
-    "test": "rive test",
-    "test:ui": "rive test --ui",
-    "test:watch": "rive test --watch"
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest --watch"
   },
   "devDependencies": {
     "@guoyunhe/editorconfig": "^0.3.0",
@@ -57,9 +57,12 @@
     "@vited/cli": "^0.1.1",
     "@vited/core": "^0.1.2",
     "@vited/theme-mantine": "^0.2.1",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/ui": "^5.0.5",
     "bootstrap-icons": "^1.13.2",
     "change-case": "^5.4.4",
     "gh-pages": "^5.0.0",
+    "happy-dom": "^21.0.4",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
     "oxfmt": "^0.74.0",
@@ -71,9 +74,11 @@
     "rive": "^2.3.0",
     "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
+    "tsdown": "^0.23.4",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
-    "vite": "^8.3.5"
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
   },
   "peerDependencies": {
     "react": "^19.0.0 || ^18.0.0 || ^17.0.0 || ^16.8.0"
