@@ -6,4 +6,15 @@ import recommendedUnicorn from 'oxlint-config-recommended/unicorn';
 
 export default defineConfig({
   extends: [recommended, recommendedUnicorn, recommendedReact, recommendedJsxA11y],
+  rules: {
+    'unicorn/filename-case': [
+      'error',
+      {
+        cases: {
+          camelCase: true,
+          pascalCase: true,
+        },
+      },
+    ],
+  },
 });
