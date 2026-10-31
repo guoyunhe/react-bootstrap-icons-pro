@@ -13,5 +13,5 @@
     "types": ["node"],
     "jsx": "react"
   },
-  "exclude": ["build", "coverage", "dist", "node_modules"]
+  "exclude": ["build", "coverage", "dist", "docs_dist", "node_modules"]
 }

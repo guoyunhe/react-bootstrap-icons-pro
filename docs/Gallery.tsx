@@ -1,6 +1,5 @@
 import React, {
   type ComponentType,
-  type CSSProperties,
   useCallback,
   useDeferredValue,
   useEffect,
@@ -13,6 +12,8 @@ import * as icons from '../src/icons';
 import type { IconProps } from '../src/types';
 
 import './Gallery.css';
+
+const { BiCheckLg, BiClipboard, BiSearch, BiXLg } = icons;
 
 type IconComponent = ComponentType<IconProps>;
 
@@ -65,6 +66,7 @@ export default function Gallery() {
   const [selectedName, setSelectedName] = useState<string>();
   const [copiedKey, setCopiedKey] = useState<string>();
   const copiedTimer = useRef<ReturnType<typeof globalThis.setTimeout>>();
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   const terms = useMemo(
     () =>
@@ -111,46 +113,66 @@ export default function Gallery() {
   useEffect(() => () => globalThis.clearTimeout(copiedTimer.current), []);
 
   useEffect(() => {
-    if (!selectedName) return;
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setSelectedName(undefined);
+    const dialog = dialogRef.current;
+    if (!selected || !dialog) return;
+    if (!dialog.open) dialog.showModal();
+    // Close when clicking the ::backdrop (registered as a click on the dialog itself)
+    const handleClick = (event: MouseEvent) => {
+      if (event.target === dialog) dialog.close();
     };
-    globalThis.addEventListener('keydown', handleKeyDown);
-    return () => globalThis.removeEventListener('keydown', handleKeyDown);
-  }, [selectedName]);
+    dialog.addEventListener('click', handleClick);
+    return () => dialog.removeEventListener('click', handleClick);
+  }, [selected]);
+
+  const closeDialog = useCallback(() => {
+    dialogRef.current?.close();
+  }, []);
 
   return (
-    <div className='rbi-gallery'>
-      <div className='rbi-gallery__toolbar'>
-        <label className='rbi-gallery__field rbi-gallery__search'>
-          <span className='rbi-gallery__label'>Search</span>
-          <input
-            type='search'
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder='Search icons…'
-            aria-label='Search icons'
-          />
-        </label>
+    <div className='my-4'>
+      <div className='d-flex flex-wrap align-items-end gap-3 p-3 border rounded bg-2'>
+        <div className='flex-grow-1'>
+          <label htmlFor='rbi-gallery-search' className='form-label'>
+            Search
+          </label>
+          <div className='input-group'>
+            <span className='input-group-text'>
+              <BiSearch aria-hidden='true' />
+            </span>
+            <input
+              id='rbi-gallery-search'
+              type='search'
+              className='form-control'
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder='Search icons…'
+            />
+          </div>
+        </div>
 
-        <label className='rbi-gallery__field'>
-          <span className='rbi-gallery__label'>
+        <div>
+          <label
+            htmlFor='rbi-gallery-size'
+            className='form-label d-flex justify-content-between gap-2'
+          >
             Size <output>{size}px</output>
-          </span>
+          </label>
           <input
+            id='rbi-gallery-size'
             type='range'
+            className='form-range'
+            style={{ width: 160 }}
             min={16}
             max={96}
             step={4}
             value={size}
             onChange={(event) => setSize(Number(event.target.value))}
-            aria-label='Icon size'
           />
-        </label>
+        </div>
 
-        <div className='rbi-gallery__field'>
-          <span className='rbi-gallery__label'>Color</span>
-          <div className='rbi-gallery__colors'>
+        <div>
+          <span className='form-label d-block'>Color</span>
+          <div className='d-flex align-items-center gap-2'>
             {PRESET_COLORS.map((preset) => (
               <button
                 key={preset}
@@ -171,47 +193,51 @@ export default function Gallery() {
             ))}
             <input
               type='color'
-              className='rbi-gallery__color-picker'
+              className='form-control form-control-color'
               value={color === 'currentColor' ? '#1c7ed6' : color}
               aria-label='Custom color'
+              title='Custom color'
               onChange={(event) => setColor(event.target.value)}
             />
           </div>
         </div>
 
-        <span className='rbi-gallery__count'>
+        <span className='ms-auto fg-3 text-sm text-nowrap'>
           {filteredIcons.length} / {ALL_ICONS.length} icons
         </span>
       </div>
 
       {filteredIcons.length === 0 ? (
-        <p className='rbi-gallery__empty'>No icons match “{deferredQuery}”.</p>
+        <p className='text-center fg-3 py-5'>No icons match “{deferredQuery}”.</p>
       ) : (
         <ul
-          className='rbi-gallery__grid'
-          style={{ '--rbi-gallery-size': `${size}px` } as CSSProperties}
+          className='list-unstyled d-grid gap-2 mt-3 mb-0 p-0'
+          style={{
+            gridTemplateColumns: `repeat(auto-fill, minmax(${Math.max(size + 48, 96)}px, 1fr))`,
+          }}
         >
           {filteredIcons.map(({ name, Icon }) => (
-            <li key={name} className='rbi-gallery__cell'>
+            <li key={name} className='rbi-gallery__cell position-relative'>
               <button
                 type='button'
-                className='rbi-gallery__card'
+                className='btn btn-subtle theme-secondary d-flex flex-column align-items-center justify-content-center gap-2 w-100 h-100 p-2'
+                style={{ minHeight: size + 52 }}
                 title={`Preview ${name}`}
                 onClick={() => setSelectedName(name)}
               >
-                <span className='rbi-gallery__icon' style={{ color }}>
+                <span className='d-flex' style={{ height: size, color }}>
                   <Icon size={size} aria-hidden='true' />
                 </span>
-                <span className='rbi-gallery__name'>{name}</span>
+                <span className='d-block w-100 text-truncate text-xs fg-3'>{name}</span>
               </button>
               <button
                 type='button'
-                className='rbi-gallery__quick-copy'
+                className='rbi-gallery__quick-copy btn btn-icon btn-subtle theme-secondary btn-sm position-absolute top-0 end-0 m-1'
                 title='Copy code'
                 aria-label={`Copy code for ${name}`}
                 onClick={() => handleCopy(name, buildSnippet(name))}
               >
-                {copiedKey === name ? '✓' : '⧉'}
+                {copiedKey === name ? <BiCheckLg /> : <BiClipboard />}
               </button>
             </li>
           ))}
@@ -219,38 +245,52 @@ export default function Gallery() {
       )}
 
       {selected && (
-        <div className='rbi-gallery__overlay'>
-          <button
-            type='button'
-            className='rbi-gallery__backdrop'
-            aria-label='Close preview'
-            onClick={() => setSelectedName(undefined)}
-          />
-          <dialog open className='rbi-gallery__dialog' aria-label={`${selected.name} preview`}>
+        <dialog
+          ref={dialogRef}
+          className='dialog dialog-scrollable'
+          aria-label={`${selected.name} preview`}
+          onClose={() => setSelectedName(undefined)}
+        >
+          <div className='dialog-header'>
+            <h3 className='dialog-title'>{selected.name}</h3>
             <button
               type='button'
-              className='rbi-gallery__close'
+              className='btn btn-icon btn-subtle theme-secondary ms-auto'
               aria-label='Close preview'
-              onClick={() => setSelectedName(undefined)}
+              onClick={closeDialog}
             >
-              ×
+              <BiXLg />
             </button>
-            <div className='rbi-gallery__preview' style={{ color }}>
+          </div>
+          <div className='dialog-body'>
+            <div
+              className='d-flex align-items-center justify-content-center rounded bg-2 p-4'
+              style={{ color, minHeight: 160 }}
+            >
               <selected.Icon size={Math.max(64, size * 2)} aria-hidden='true' />
             </div>
-            <h3 className='rbi-gallery__title'>{selected.name}</h3>
-            <pre className='rbi-gallery__code'>
+            <pre className='border rounded bg-2 font-monospace text-sm overflow-auto p-3 mt-3 mb-0'>
               <code>{snippet}</code>
             </pre>
+          </div>
+          <div className='dialog-footer'>
             <button
               type='button'
-              className='rbi-gallery__copy-code'
+              className='btn btn-solid theme-primary'
               onClick={() => handleCopy('snippet', snippet)}
             >
-              {copiedKey === 'snippet' ? 'Copied!' : 'Copy code'}
+              {copiedKey === 'snippet' ? (
+                <>
+                  <BiCheckLg /> Copied!
+                </>
+              ) : (
+                <>
+                  <BiClipboard /> Copy code
+                </>
+              )}
             </button>
-          </dialog>
-        </div>
+          </div>
+        </dialog>
       )}
     </div>
   );
