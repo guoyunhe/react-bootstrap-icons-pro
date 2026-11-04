@@ -37,6 +37,7 @@
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "generate": "tsx generate.ts",
+    "generate:search-terms": "tsx scripts/generateSearchTerms.ts",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "prepare": "husky",

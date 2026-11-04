@@ -10,6 +10,8 @@ import React, {
 
 import * as icons from '../src/icons';
 import type { IconProps } from '../src/types';
+import { filterIcons } from './gallerySearch';
+import iconSearchTerms from './icon-search-terms.json';
 
 import './Gallery.css';
 
@@ -20,21 +22,24 @@ type IconComponent = ComponentType<IconProps>;
 interface IconEntry {
   name: string;
   Icon: IconComponent;
+  searchTerms: string[];
 }
+
+const ICON_SEARCH_TERMS: Record<string, string[]> = iconSearchTerms;
 
 const ALL_ICONS: IconEntry[] = (Object.keys(icons) as Array<keyof typeof icons>)
   .toSorted((a, b) => a.localeCompare(b))
-  .map((name) => ({ name, Icon: icons[name] as IconComponent }));
+  .map((name) => ({
+    name,
+    Icon: icons[name] as IconComponent,
+    searchTerms: ICON_SEARCH_TERMS[name] ?? [],
+  }));
 
 const PRESET_COLORS = ['currentColor', '#1c7ed6', '#0ca678', '#f08c00', '#e03131', '#ae3ec9'];
 
 const DEFAULT_SIZE = 32;
 
 const COPY_FEEDBACK_MS = 1500;
-
-function normalize(value: string) {
-  return value.toLowerCase().replaceAll(/[^a-z0-9]/g, '');
-}
 
 async function copyText(text: string) {
   const clipboard = globalThis.navigator?.clipboard;
@@ -68,27 +73,7 @@ export default function Gallery() {
   const copiedTimer = useRef<ReturnType<typeof globalThis.setTimeout>>();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const terms = useMemo(
-    () =>
-      deferredQuery
-        .trim()
-        .toLowerCase()
-        .split(/\s+/)
-        .filter(Boolean)
-        .map((term) => normalize(term)),
-    [deferredQuery],
-  );
-
-  const filteredIcons = useMemo(
-    () =>
-      terms.length === 0
-        ? ALL_ICONS
-        : ALL_ICONS.filter(({ name }) => {
-            const normalized = normalize(name);
-            return terms.every((term) => normalized.includes(term));
-          }),
-    [terms],
-  );
+  const filteredIcons = useMemo(() => filterIcons(ALL_ICONS, deferredQuery), [deferredQuery]);
 
   const selected = ALL_ICONS.find(({ name }) => name === selectedName);
 
@@ -145,7 +130,7 @@ export default function Gallery() {
               className='form-control'
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder='Search icons…'
+              placeholder='Search by name or keyword…'
             />
           </div>
         </div>
