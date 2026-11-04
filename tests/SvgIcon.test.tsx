@@ -2,8 +2,8 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import { BiHouse } from './icons';
-import SvgIcon from './SvgIcon';
+import { BiHouse } from '../src/icons';
+import SvgIcon from '../src/SvgIcon';
 
 describe('SvgIcon', () => {
   it('renders an svg with the bootstrap icon class', () => {
