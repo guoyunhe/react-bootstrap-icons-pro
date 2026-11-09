@@ -171,7 +171,6 @@ export default function Gallery() {
             ))}
             <Input
               type='color'
-              className='form-control-color'
               value={color === 'currentColor' ? '#1c7ed6' : color}
               aria-label='Custom color'
               title='Custom color'
@@ -262,7 +261,7 @@ export default function Gallery() {
               <IconButton
                 variant='subtle'
                 theme='secondary'
-                className='ms-auto'
+                ms='auto'
                 aria-label='Close preview'
                 onClick={() => setSelectedName(undefined)}
               >
