@@ -1,6 +1,7 @@
 .rbi-gallery__swatch {
   width: 1.5rem;
   height: 1.5rem;
+  min-height: 1.5rem;
   flex-shrink: 0;
   padding: 0;
   border: 2px solid transparent;

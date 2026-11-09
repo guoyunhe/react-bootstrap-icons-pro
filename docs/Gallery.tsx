@@ -15,7 +15,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  FormLabel,
   IconButton,
   Input,
   InputGroup,
@@ -113,9 +112,8 @@ export default function Gallery() {
 
   return (
     <Box my={4}>
-      <Box d='flex' flexWrap='wrap' alignItems='end' gap={3} p={3} border rounded bg='2'>
+      <Box d='flex' flexWrap='wrap' alignItems='center' gap={5}>
         <Box flexGrow={1}>
-          <FormLabel htmlFor='rbi-gallery-search'>Search</FormLabel>
           <InputGroup>
             <InputGroupText>
               <BiSearch aria-hidden='true' />
@@ -123,6 +121,7 @@ export default function Gallery() {
             <Input
               id='rbi-gallery-search'
               type='search'
+              aria-label='Search icons'
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder='Search by name or keyword…'
@@ -130,12 +129,10 @@ export default function Gallery() {
           </InputGroup>
         </Box>
 
-        <Box>
-          <FormLabel htmlFor='rbi-gallery-size' d='flex' justifyContent='between' gap={2}>
-            Size <output>{size}px</output>
-          </FormLabel>
+        <Box d='flex' alignItems='center' gap={2}>
           <Range
             id='rbi-gallery-size'
+            aria-label='Icon size'
             style={{ width: 160 }}
             min={16}
             max={96}
@@ -143,45 +140,38 @@ export default function Gallery() {
             value={size}
             onChange={(event) => setSize(Number(event.target.value))}
           />
+          <output>{size}px</output>
         </Box>
 
-        <Box>
-          <FormLabel component='span' d='block'>
-            Color
-          </FormLabel>
-          <Box d='flex' alignItems='center' gap={2}>
-            {PRESET_COLORS.map((preset) => (
-              <Button
-                key={preset}
-                variant='subtle'
-                theme='secondary'
-                className={
-                  preset === 'currentColor'
-                    ? 'rbi-gallery__swatch rbi-gallery__swatch--inherit'
-                    : 'rbi-gallery__swatch'
-                }
-                style={preset === 'currentColor' ? undefined : { backgroundColor: preset }}
-                aria-label={
-                  preset === 'currentColor' ? 'Inherit text color' : `Use color ${preset}`
-                }
-                aria-pressed={color === preset}
-                title={preset === 'currentColor' ? 'Inherit text color' : preset}
-                onClick={() => setColor(preset)}
-              />
-            ))}
-            <Input
-              type='color'
-              value={color === 'currentColor' ? '#1c7ed6' : color}
-              aria-label='Custom color'
-              title='Custom color'
-              onChange={(event) => setColor(event.target.value)}
+        <Box d='flex' alignItems='center' gap={2}>
+          {PRESET_COLORS.map((preset) => (
+            <Button
+              key={preset}
+              variant='subtle'
+              theme='secondary'
+              className={
+                preset === 'currentColor'
+                  ? 'rbi-gallery__swatch rbi-gallery__swatch--inherit'
+                  : 'rbi-gallery__swatch'
+              }
+              style={preset === 'currentColor' ? undefined : { backgroundColor: preset }}
+              aria-label={preset === 'currentColor' ? 'Inherit text color' : `Use color ${preset}`}
+              aria-pressed={color === preset}
+              title={preset === 'currentColor' ? 'Inherit text color' : preset}
+              onClick={() => setColor(preset)}
             />
-          </Box>
+          ))}
+          <Input
+            type='color'
+            value={color === 'currentColor' ? '#1c7ed6' : color}
+            aria-label='Custom color'
+            title='Custom color'
+            onChange={(event) => setColor(event.target.value)}
+          />
         </Box>
-
-        <Box ms='auto' fg='3' fontSize='sm' textWrap='nowrap'>
-          {filteredIcons.length} / {ALL_ICONS.length} icons
-        </Box>
+      </Box>
+      <Box mt={2} fg='3' fontSize='sm' textWrap='nowrap'>
+        {filteredIcons.length} / {ALL_ICONS.length} icons
       </Box>
 
       {filteredIcons.length === 0 ? (
